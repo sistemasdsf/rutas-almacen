@@ -15,15 +15,25 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { AppComponent } from './app.component';
 import { ModalRouteManagerComponent } from './modal-route-manager/modal-route-manager.component';
+import { RouterModule } from '@angular/router';
+import { NoAccessComponentComponent } from './no-access-component/no-access-component.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { HomeComponent } from './home/home.component';
 
 const materialModules = [
   MatIconModule
 ];
 
+const routes = [
+  {path: '', component: HomeComponent, canActivate: [AuthGuardService]},
+  {path: 'noAccess', component: NoAccessComponentComponent}
+]
+
 @NgModule({
   declarations: [
     AppComponent,
-    ModalRouteManagerComponent
+    ModalRouteManagerComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +44,7 @@ const materialModules = [
     ReactiveFormsModule,
     HttpClientModule,
     MatSelectModule,
+    RouterModule.forRoot(routes),
     ...materialModules
   ],
   providers: [],
