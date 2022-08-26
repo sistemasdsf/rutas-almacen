@@ -41,6 +41,7 @@ const routes = [
     MatTableModule,
     MatSortModule,
     MatDialogModule,
+    MatPaginatorModule,
     ReactiveFormsModule,
     HttpClientModule,
     MatSelectModule,

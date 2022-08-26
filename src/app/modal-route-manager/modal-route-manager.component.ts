@@ -35,7 +35,7 @@ export class ModalRouteManagerComponent implements OnInit {
 
   public routesToFormGroup(item: any): FormGroup {
     return this._fb.group({
-      state: [item?.state, [Validators.required]],
+      state: [item?.ESTADO, [Validators.required]],
     })
   }
 
@@ -44,8 +44,8 @@ export class ModalRouteManagerComponent implements OnInit {
       return;
     }
     const modelDataCopy:any = {
-      IDAGENCIA: this.modelData.IDAGENCIA,
-      state: this.routesForm.get('state')?.value,
+      ROWID: this.modelData.ROWID,
+      ESTADO: this.routesForm.get('state')?.value,
     }
     this._handleRoutesService.updateItem(modelDataCopy).subscribe(() => {
       this._closeModal(true);

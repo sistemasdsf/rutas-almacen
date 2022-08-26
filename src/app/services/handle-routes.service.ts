@@ -13,7 +13,7 @@ export class HandleRoutesService {
   ) { }
 
   public getItems(): Observable<any> {
-    return this.http.get<any>(`${environment.hostApi}/select-rutas`).pipe(
+    return this.http.get<any>(`${environment.hostApi}/select-routes`).pipe(
       map(response => {
         if(response) {
           return response;
@@ -25,7 +25,7 @@ export class HandleRoutesService {
   }
 
   public updateItem(item: any): Observable<any> {
-    return this.http.post<any>(`${environment.hostApi}/update-rutas`, item).pipe(
+    return this.http.post<any>(`${environment.hostApi}/update-route`, item).pipe(
       map(response => {
         if(response) {
           return 'success'

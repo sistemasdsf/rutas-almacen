@@ -5,32 +5,32 @@
           <!-- Name Column -->
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef> Nombre Agencia </th>
-            <td mat-cell *matCellDef="let element"> {{element?.name}} </td>
+            <td mat-cell *matCellDef="let element"> {{element?.NOMBRE_AGENCIA}} </td>
           </ng-container>
           <!-- Adjustment Column -->
           <ng-container matColumnDef="adjustment">
             <th mat-header-cell *matHeaderCellDef> Ajuste </th>
-            <td mat-cell *matCellDef="let element"> {{element?.adjustment}} </td>
+            <td mat-cell *matCellDef="let element"> {{element?.AJUSTE}} </td>
           </ng-container>
           <!-- Cubic Capacity Column -->
           <ng-container matColumnDef="cubic_capacity">
             <th mat-header-cell *matHeaderCellDef> Cubicaje </th>
-            <td mat-cell *matCellDef="let element"> {{element?.cubic_capacity}} </td>
+            <td mat-cell *matCellDef="let element"> {{element?.CUBICAJE}} </td>
           </ng-container>
           <!-- State Column -->
           <ng-container matColumnDef="state">
             <th mat-header-cell *matHeaderCellDef> Estado </th>
-            <td mat-cell *matCellDef="let element; let index = index"> {{ element?.state}}</td>
+            <td mat-cell *matCellDef="let element; let index = index"> {{ element?.ESTADO}}</td>
           </ng-container>
           <!-- Service Type Column -->
           <ng-container matColumnDef="service_type">
             <th mat-header-cell *matHeaderCellDef> Tipo de Servicio </th>
-            <td mat-cell *matCellDef="let element"> {{element?.service_type}} </td>
+            <td mat-cell *matCellDef="let element"> {{element?.TIPO_SERVICIO}} </td>
           </ng-container>
           <!-- Route Column -->
           <ng-container matColumnDef="route">
             <th mat-header-cell *matHeaderCellDef> Ruta </th>
-            <td mat-cell *matCellDef="let element"> {{element?.route}} </td>
+            <td mat-cell *matCellDef="let element"> {{element?.RUTA}} </td>
           </ng-container>
           <!-- Actions Column -->
           <ng-container matColumnDef="actions">
@@ -45,5 +45,6 @@
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+        <mat-paginator [pageSizeOptions]="[15, 30, 100]"></mat-paginator>
     </div>
   </div>

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { filter } from 'rxjs';
 import { IModalData, ModalRouteManagerComponent } from '../modal-route-manager/modal-route-manager.component';
@@ -20,26 +21,9 @@ export class HomeComponent implements OnInit {
     'route',
     'actions'
   ];
-  public dataSource = new MatTableDataSource<any>([
-    {
-      IDAGENCIA: 1,
-      name: 'Correos Islas',
-      adjustment: 1,
-      cubic_capacity: 167,
-      state: 'Activo',
-      service_type: 'Básico',
-      route: 62,
-    },
-    {
-      IDAGENCIA: 2,
-      name: 'Cabeza Transport',
-      adjustment: 1,
-      cubic_capacity: 250,
-      state: 'Activo',
-      service_type: 'Básico',
-      route: 54,
-    }
-  ]);
+  public dataSource: any;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(
     public dialog: MatDialog,
@@ -48,16 +32,17 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void{
     this._handleRoutesService.getItems().subscribe(data => {
-      this.dataSource = new MatTableDataSource<any>(data);
+      this.dataSource = new MatTableDataSource<any>(data.rows);
+      this.dataSource.paginator = this.paginator;
     });
   }
 
-  openRouteManagerModal(allocation: any) {
+  openRouteManagerModal(route: any) {
     const dialogRef = this.dialog.open(ModalRouteManagerComponent, {
       minWidth: '15vW',
       minHeight: '15vH',
       data: {
-        modelData: allocation
+        modelData: route
       } as unknown as IModalData
     });
     dialogRef.afterClosed().pipe(
